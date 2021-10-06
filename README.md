@@ -6,13 +6,13 @@ Very basic starter kit for creating a Gatsby site without a content source.
 
 Open `gatsby-config.js` and edit the following variables:
 
-`siteUrl`: The base url for the site.
-`siteName`: The site name used in the window title.
-`siteSlogan`: The site slogan used in the homepage window title after the site name.
-`siteDescription`: The description that appears on search engine results.;
-`siteShortName`: The name used when you bookmark the site on a phone. Defaults to same value as `siteName`.
-`themeColor`: The color used for the address bar on mobile browsers.
-`googleAnalyticsID`: The site's Google Analytics tracking ID.
+- `siteUrl`: The base url for the site.
+- `siteName`: The site name used in the window title.
+- `siteSlogan`: The site slogan used in the homepage window title after the site name.
+- `siteDescription`: The description that appears on search engine results.;
+- `siteShortName`: The name used when you bookmark the site on a phone. Defaults to same value as `siteName`.
+- `themeColor`: The color used for the address bar on mobile browsers.
+- `googleAnalyticsID`: The site's Google Analytics tracking ID.
 
 ## Using images
 
