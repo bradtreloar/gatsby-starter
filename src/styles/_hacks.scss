@@ -1,0 +1,45 @@
+// Force scrollbar.
+html {
+  overflow-y: scroll;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.blockquote {
+  font-size: 1em;
+}
+
+.text-small {
+  font-size: 0.65em;
+}
+
+.text-large {
+  font-size: 1.25em;
+}
+
+.nav-tabs {
+  a {
+    cursor: pointer;
+  }
+}
+
+.text-white {
+  a {
+    color: inherit;
+  }
+}
+
+// IE11
+.card {
+  width: 100%;
+}
+
+.content {
+  .card {
+    table {
+      width: 100%;
+    }
+  }
+}
