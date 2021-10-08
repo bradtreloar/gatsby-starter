@@ -7,7 +7,7 @@ const siteUrl = `https://example.com`;
 const siteName = `Gatsby Starter`;
 
 // The site slogan used in the homepage window title after the site name.
-const siteSlogan = `Gatsby Starter`;
+const siteSlogan = ``;
 
 // The description that appears on search engine results.
 const siteDescription = `
