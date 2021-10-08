@@ -9,8 +9,8 @@ const mainMenuItems: MenuItem[] = [
 
 const contactMenuItems: MenuItem[] = [
   {
-    label: "Contact Us",
-    url: "/contact",
+    label: "0412 345 678",
+    url: "tel:+61412345678",
     icon: PhoneIcon
   }
 ];
