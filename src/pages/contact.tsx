@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import ContactForm from "../components/ContactForm";
 import DefaultLayout from "../layouts/DefaultLayout";
 import PageTitle from "../components/PageTitle";

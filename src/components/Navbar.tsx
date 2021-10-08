@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import classnames from "classnames";
