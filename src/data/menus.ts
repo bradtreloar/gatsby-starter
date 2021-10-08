@@ -1,8 +1,4 @@
-export interface MenuItem {
-  label: string;
-  url?: string;
-  subMenu?: MenuItem[];
-}
+import { PhoneIcon } from "../components/Icons";
 
 const mainMenuItems: MenuItem[] = [
   {
@@ -11,4 +7,12 @@ const mainMenuItems: MenuItem[] = [
   }
 ];
 
-export { mainMenuItems };
+const contactMenuItems: MenuItem[] = [
+  {
+    label: "Contact Us",
+    url: "/contact",
+    icon: PhoneIcon
+  }
+];
+
+export { mainMenuItems, contactMenuItems };

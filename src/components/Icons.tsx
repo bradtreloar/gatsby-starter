@@ -1,15 +1,12 @@
 import React from "react";
 
-export interface IconProps {
-  size?: number;
-}
-
-export const CloseIcon: React.FC<IconProps> = ({ size }) => (
+export const CloseIcon: React.FC<IconProps> = ({ size, className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"
     height={size || 24}
     width={size || 24}
+    className={className}
   >
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path
@@ -20,24 +17,26 @@ export const CloseIcon: React.FC<IconProps> = ({ size }) => (
   </svg>
 );
 
-export const NavIcon: React.FC<IconProps> = ({ size }) => (
+export const NavIcon: React.FC<IconProps> = ({ size, className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"
     height={size || 24}
     width={size || 24}
+    className={className}
   >
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
   </svg>
 );
 
-export const PhoneIcon: React.FC<IconProps> = ({ size }) => (
+export const PhoneIcon: React.FC<IconProps> = ({ size, className }) => (
   <svg
     viewBox="0 0 512 512"
     fill="currentColor"
     height={size || 24}
     width={size || 24}
+    className={className}
   >
     <path
       d={`
