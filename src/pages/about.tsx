@@ -8,7 +8,9 @@ const Page = () => (
   <DefaultLayout pageTitle={pageTitle} isFront>
     <PageTitle>{pageTitle}</PageTitle>
     <div className="container">
-      <div className="card p-3 p-sm-4 p-md-5 mb-5">Lorem ipsum</div>
+      <div className="card">
+        <div className="card-body">Lorem ipsum</div>
+      </div>
     </div>
   </DefaultLayout>
 );
