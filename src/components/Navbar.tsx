@@ -4,6 +4,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import classnames from "classnames";
 import { MenuItem, mainMenuItems } from "../data/menus";
 import logo from "../assets/logo.svg";
+import { CloseIcon, NavIcon } from "./Icons";
 
 // Set colors here instead of in the JSX markup.
 export const navbarBackground = "white";
@@ -35,7 +36,7 @@ const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
   const navItems = (menuItems: MenuItem[]) => {
     return menuItems.map((menuItem, index) =>
       menuItem.subMenu === undefined ? (
-        <Nav.Link key={`${index}`} href={menuItem.url}>
+        <Nav.Link key={`${index}`} href={menuItem.url} className="px-3">
           {menuItem.label}
         </Nav.Link>
       ) : (
@@ -75,11 +76,22 @@ const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
           <Link to="/" className="navbar-brand">
             <img src={logo} alt={data.site.siteMetadata.title} height="52" />
           </Link>
-          <Navbar.Toggle aria-controls="navbar-nav" />
+          <Navbar.Toggle aria-controls="navbar-nav">
+            <NavIcon size={36} />
+          </Navbar.Toggle>
           <Navbar.Collapse
             id="navbar-nav"
-            className="justify-content-end text-right"
+            className={classnames(
+              "justify-content-end",
+              "text-right",
+              `bg-${navbarBackground}`
+            )}
           >
+            <div className="offcanvas-header d-flex d-lg-none align-items-center justify-content-end">
+              <Navbar.Toggle aria-controls="navbar-nav" className="mr-3">
+                <CloseIcon size={36} />
+              </Navbar.Toggle>
+            </div>
             <Nav>{navItems(mainMenuItems)}</Nav>
           </Navbar.Collapse>
         </Navbar>

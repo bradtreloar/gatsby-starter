@@ -15,6 +15,7 @@ interface StaticQueryProps {
   site: {
     siteMetadata: {
       title: string;
+      slogan: string;
       description: string;
       keywords: string;
     };
@@ -35,15 +36,25 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
           siteMetadata {
             title
             description
+            slogan
           }
         }
       }
     `}
     render={(data: StaticQueryProps) => {
       const siteTitle = data.site.siteMetadata.title;
+      const siteSlogan = data.site.siteMetadata.slogan;
       return (
         <Root className={className}>
-          <Helmet title={isFront ? siteTitle : `${pageTitle} | ${siteTitle}`}>
+          <Helmet
+            title={
+              isFront
+                ? siteSlogan
+                  ? `${siteTitle} | ${siteSlogan}`
+                  : siteTitle
+                : `${pageTitle} | ${siteTitle}`
+            }
+          >
             {isContact && (
               <script
                 src="https://www.google.com/recaptcha/api.js"
@@ -63,7 +74,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
             <div className="boilerplate bg-white">
               <div className="container text-center">
                 <div className="py-3">
-                  <p className="m-0">© (2021) {data.site.siteMetadata.title}</p>
+                  <p className="m-0">
+                    © {new Date().getFullYear()} {data.site.siteMetadata.title}
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,0 +1,26 @@
+@include media-breakpoint-down(md) {
+  .offcanvas-header {
+    height: $navbar-height;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+    left: 100%;
+    width: $navbar-width;
+    overflow-y: auto;
+    visibility: hidden;
+    transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 2;
+
+    &.collapsing {
+      visibility: visible;
+    }
+
+    &.show {
+      visibility: visible;
+      transform: translateX(-100%);
+    }
+  }
+}
