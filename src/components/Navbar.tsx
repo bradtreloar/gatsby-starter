@@ -22,11 +22,6 @@ interface NavbarQueryProps {
   };
 }
 
-interface NavItemsOptions {
-  collapseLabel?: boolean;
-  asButtons?: boolean;
-}
-
 const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
   const data: NavbarQueryProps = useStaticQuery(graphql`
     query NavbarQuery {
@@ -37,70 +32,6 @@ const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
       }
     }
   `);
-
-  const navItems = (menuItems: MenuItem[], options?: NavItemsOptions) => {
-    return menuItems.map((menuItem, index) => {
-      const Icon = menuItem.icon;
-      return menuItem.subMenu === undefined ? (
-        <Nav.Link
-          key={`${index}`}
-          href={menuItem.url}
-          className={classnames(
-            "px-3",
-            options?.asButtons && "btn btn-primary text-white"
-          )}
-        >
-          {Icon && (
-            <Icon
-              size={18}
-              className={classnames(
-                options?.collapseLabel ? "mr-lg-2" : "mr-2"
-              )}
-            />
-          )}
-          <span
-            className={classnames(
-              Icon && options?.collapseLabel && "d-none d-lg-inline"
-            )}
-          >
-            {menuItem.label}
-          </span>
-        </Nav.Link>
-      ) : (
-        <NavDropdown
-          key={`${index}`}
-          title={menuItem.label}
-          id={`nav-dropdown-${index}`}
-        >
-          {menuItem.subMenu.map((menuItem, innerIndex) => {
-            const Icon = menuItem.icon;
-            return (
-              <NavDropdown.Item
-                key={`${index}-${innerIndex}`}
-                href={menuItem.url}
-              >
-                {Icon && (
-                  <Icon
-                    size={18}
-                    className={classnames(
-                      options?.collapseLabel ? "mr-lg-2" : "mr-2"
-                    )}
-                  />
-                )}
-                <span
-                  className={classnames(
-                    Icon && options?.collapseLabel && "d-none d-lg-inline"
-                  )}
-                >
-                  {menuItem.label}
-                </span>
-              </NavDropdown.Item>
-            );
-          })}
-        </NavDropdown>
-      );
-    });
-  };
 
   return (
     <div
@@ -134,13 +65,12 @@ const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
                 <CloseIcon size={36} />
               </Navbar.Toggle>
             </div>
-            <Nav>{navItems(mainMenuItems)}</Nav>
+            <Nav>
+              <NavItems menuItems={mainMenuItems} />
+            </Nav>
           </Navbar.Collapse>
           <Nav className="ml-auto">
-            {navItems(contactMenuItems, {
-              collapseLabel: true,
-              asButtons: true
-            })}
+            <NavItems menuItems={contactMenuItems} collapseLabel asButtons />
           </Nav>
           <Navbar.Toggle aria-controls="navbar-nav">
             <NavIcon size={36} />
@@ -150,5 +80,78 @@ const NavbarWrapper: React.FC<NavbarProps> = ({ className }) => {
     </div>
   );
 };
+
+interface NavItemsProps {
+  menuItems: MenuItem[];
+  collapseLabel?: boolean;
+  asButtons?: boolean;
+  className?: string;
+}
+
+const NavItems: React.FC<NavItemsProps> = ({
+  menuItems,
+  collapseLabel,
+  asButtons
+}) => (
+  <>
+    {menuItems.map((menuItem, index) => {
+      const Icon = menuItem.icon;
+      return menuItem.subMenu === undefined ? (
+        <Nav.Link
+          key={`${index}`}
+          href={menuItem.url}
+          className={classnames(
+            "px-3",
+            asButtons && "btn btn-primary text-white"
+          )}
+        >
+          {Icon && (
+            <Icon
+              size={18}
+              className={classnames(collapseLabel ? "mr-lg-2" : "mr-2")}
+            />
+          )}
+          <span
+            className={classnames(
+              Icon && collapseLabel && "d-none d-lg-inline"
+            )}
+          >
+            {menuItem.label}
+          </span>
+        </Nav.Link>
+      ) : (
+        <NavDropdown
+          key={`${index}`}
+          title={menuItem.label}
+          id={`nav-dropdown-${index}`}
+        >
+          {menuItem.subMenu.map((menuItem, innerIndex) => {
+            const Icon = menuItem.icon;
+            return (
+              <NavDropdown.Item
+                key={`${index}-${innerIndex}`}
+                href={menuItem.url}
+              >
+                {Icon && (
+                  <Icon
+                    size={18}
+                    className={classnames(collapseLabel ? "mr-lg-2" : "mr-2")}
+                  />
+                )}
+                <span
+                  className={classnames(
+                    Icon && collapseLabel && "d-none d-lg-inline"
+                  )}
+                >
+                  {menuItem.label}
+                </span>
+              </NavDropdown.Item>
+            );
+          })}
+        </NavDropdown>
+      );
+    })}
+  </>
+);
 
 export default NavbarWrapper;
