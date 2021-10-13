@@ -7,5 +7,5 @@
 
 @include bg-variant(".bg-black", black, true);
 
-@import "./components/off-canvas.scss";
+@import "./components/off-canvas";
 @import "./hacks.scss";
